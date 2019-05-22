@@ -27,20 +27,18 @@ public class UserController {
     @Autowired
     private CustomerService customerService;
     //用户登录
-    @RequestMapping(value = "/long.action",method = RequestMethod.POST)
-    @ResponseBody
-    public User login(@RequestBody User user, Model model, HttpSession session){
+    @PostMapping(value = "/long.action")
+    public String login(String user_code,String password, Model model, HttpSession session){
         //通过账户和密码查询用户
-        System.out.println(user);
-        User user1=userService.findUser(user.getUserCode(),user.getUserPassword());
-        if (user1!=null){
+        User user=userService.findUser(user_code,password);
+        if (user!=null){
             //将用户对象添加到Session
-            session.setAttribute("SUSER_SESSION",user1);
+            session.setAttribute("SUSER_SESSION",user);
             //跳转到主页面
-            return user;
+            return "customer";
         }
         //返回到登录页面
-        return user1;
+        return "Loge";
     }
     @RequestMapping(value = "/toCustomer.action")
     public String toCustomer(){

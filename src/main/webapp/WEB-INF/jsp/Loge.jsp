@@ -183,7 +183,7 @@
 <div class="dowebok">
     <div class="logo"></div>
     <%--提交后的位置：/WEB-INF/jsp/customer.jsp--%>
-    <%--  <form action="" method="post" onsubmit="return click()">--%>
+     <form action="${pageContext.request.contextPath}/long.action" method="post">
     <div class="form-item">
         <input id="user_code" name="user_code" type="text" autocomplete="off" placeholder="用户名">
         <p class="tip">请输入合法的用户名</p>
@@ -198,7 +198,7 @@
         <p class="tip">验证码不正确</p>
     </div>
     <div class="form-item">
-        <button id="submit" type="button" onclick="go()">登 录</button>
+        <button id="submit" type="submit">登 录</button>
     </div>
     </form>
     <div class="reg-bar" style="margin-top: 0px">
@@ -207,7 +207,7 @@
     </div>
 </div>
 <script>
-    go = function () {
+    /*go = function () {
         var userCode = $('#user_code').val();
         var userPassword = $('#password').val();
         //var code=$('#code').val();
@@ -219,7 +219,7 @@
             $.ajax({
                 type: "post",
                 contentType: "application/json",
-                url: "${pageContext.request.contextPath}/long.action",
+                url: "{pageContext.request.contextPath}/long.action",
                 dataType: "json",
                 data: user,
                 success: function (data) {
@@ -232,7 +232,7 @@
                 }
             });
         }
-    }
+    }*/
 </script>
 </body>
 </html>
